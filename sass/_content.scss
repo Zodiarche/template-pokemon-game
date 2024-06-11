@@ -148,20 +148,6 @@ main {
 
     form {
         @import "forms";
-
-        &.invalid {
-            .wpcf7-response-output {
-                @extend .states;
-                @extend .warning;
-            }
-        }
-
-        &.sent {
-            .wpcf7-response-output {
-                @extend .states;
-                @extend .success;
-            }
-        }
     }
 
     &#main {
