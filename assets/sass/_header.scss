@@ -1,0 +1,159 @@
+[id="header"] {
+    border-bottom: solid 0.1rem $color-dark-blue;
+    padding: 2rem;
+
+    .cols {
+        display: flex;
+        align-items: center;
+
+        .col-l {
+            flex-shrink: 0;
+
+            .size-title {
+                margin: 0;
+
+                a {
+                    text-decoration: none;
+                    display: inline-block;
+                    text-indent: -9999px;
+                    height: 10rem;
+                    width: 10rem;
+                    background-image: image-url("logo-agence-buzz.svg");
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: cover;
+                }
+            }
+        }
+
+        .col-r {
+            width: 100%;
+
+            nav {
+                ul {
+                    list-style-type: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    gap: 5rem;
+                    padding-left: 0;
+                    margin: 0;
+
+                    li {
+                        a {
+                            // @extend .btn;
+
+                            text-decoration: none;
+                            display: inline-block;
+                            color: $color-dark-blue;
+
+                            &:hover,
+                            &:focus {
+                                color: $color-light-blue;
+                            }
+                        }
+
+                        &.btn-contact {
+                            a {
+                                text-decoration: none;
+                                display: inline-block;
+                                color: $color-dark-blue;
+                                border: solid 0.1rem $color-dark-blue;
+                                border-radius: 1rem;
+                                padding: 1.5rem 0.5rem;
+
+                                &:hover,
+                                &:focus {
+                                    background-color: $color-dark-blue;
+                                    color: $color-white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    [id="menu-button"] {
+        @include from("desktop") {
+            display: none;
+        }
+        display: block;
+
+        cursor: pointer;
+        position: relative;
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        z-index: 999;
+
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .burger {
+            position: relative;
+            background-color: $color-dark-blue;
+            height: 0.3rem;
+            width: 4rem;
+            transition: all 0.4s ease-out;
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                right: 0;
+                height: 0.3rem;
+                width: 4rem;
+                background-color: $color-dark-blue;
+                transition: all 0.1s ease-out;
+            }
+
+            &::before {
+                top: -1rem;
+            }
+            &::after {
+                top: 1rem;
+            }
+        }
+
+        .menu-title {
+            @extend .visuallyhidden;
+        }
+
+        &:hover,
+        &:focus {
+            .burger {
+                &::before {
+                    top: -1.2rem;
+                }
+                &::after {
+                    top: 1.2rem;
+                }
+            }
+        }
+
+        &.active {
+            .burger {
+                background-color: transparent;
+                transition-duration: 0s;
+
+                &::before,
+                &::after {
+                    top: 0;
+                    background-color: $color-dark-blue;
+                }
+
+                &::before {
+                    transform: rotate(-45deg);
+                }
+                &::after {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+    }
+}

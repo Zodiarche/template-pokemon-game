@@ -1,0 +1,168 @@
+$colors: ();
+
+@each $color-name, $color-code in $colors {
+    .color-#{$color-name} {
+        color: $color-code;
+    }
+
+    .bg-#{$color-name} {
+        background: $color-code;
+    }
+}
+
+/* CLASSES DE BASE */
+a,
+input,
+button {
+    transition-duration: 0.4s;
+}
+a:active,
+input:active,
+button:active {
+    transition-duration: 0s;
+}
+
+.float-left,
+.alignleft {
+    float: left;
+}
+.float-right,
+.alignright {
+    float: right;
+    float: right;
+}
+
+.aligncenter {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+
+.txt-center {
+    text-align: center;
+}
+.txt-left {
+    text-align: left;
+}
+.txt-right {
+    text-align: right;
+}
+.txt-justify {
+    text-align: justify;
+}
+.txt-upper {
+    text-transform: uppercase;
+}
+
+.visuallyhidden:not(:focus):not(:active) {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+
+    &.rounded {
+        border-radius: 1rem;
+    }
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+iframe {
+    border: 0;
+    max-width: 100%;
+}
+
+.btn {
+    // a
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+
+    background-color: $color-white;
+    color: $color-dark-blue;
+    font-family: $family-default;
+    font-size: 1.6rem;
+    font-weight: 400; // normal
+    border: solid 0.1rem $color-dark-blue;
+    border-radius: 2rem;
+    padding: 1.5rem 3rem;
+
+    &:hover,
+    &:focus {
+        background-color: $color-dark-blue;
+        color: $color-white;
+    }
+
+    &:active {
+        filter: brightness(50%);
+    }
+}
+
+.wrapper {
+    max-width: $max-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    @include from("tablet") {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    @include from("wide") {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.desktop {
+    @include from("desktop") {
+        display: block;
+    }
+    display: none;
+}
+
+.mobile {
+    @include from("desktop") {
+        display: none;
+    }
+    display: block;
+}
+
+.text-limit {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.no-margin-first-last {
+    &:first-of-type {
+        margin-top: 0;
+    }
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}

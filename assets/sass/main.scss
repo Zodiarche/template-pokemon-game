@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+@import "breakpoints";
+@import "fonts";
+
+/* Dimensions */
+$max-width: 1280px;
+// $border-width:
+// $header-height:
+
+/* Couleurs classiques */
+$color-black: black;
+$color-white: white;
+/* Couleurs custom */
+$color-dark-blue: #283044;
+$color-light-blue: #78a1bb;
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    font-size: calc(1em * 0.625);
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    background-color: transparent;
+    color: $color-dark-blue;
+    font-family: $family-default;
+    font-size: 1.6rem;
+    font-weight: 400; // regular
+
+    &.active {
+        overflow-y: hidden;
+    }
+
+    #wrapper {
+        flex: 1 0 auto;
+    }
+
+    #footer {
+        flex-shrink: 0;
+    }
+
+    noscript {
+        div {
+            margin: 0 2rem;
+        }
+    }
+
+    /* Styles classiques */
+    @import "commons";
+    @import "header";
+    @import "content";
+    @import "footer";
+
+    /* Styles custom */
+}
