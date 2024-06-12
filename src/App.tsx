@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import getDataForAllPokemon from "./utils/data/data";
 import { PokemonData } from "./utils/data/interfaceDataGame";
 
+import Header from "./components/header";
+import Pokedex from "./components/pokedex";
+import Footer from "./components/footer";
+
 import "./assets/stylesheets/main.css";
 
 const App = () => {
@@ -21,56 +25,14 @@ const App = () => {
   return (
     <>
       <div id="wrapper">
-        <header id="header">
-          <div className="wrapper">
-            <div className="cols">
-              <div className="col-l"></div>
-              <div className="col-r">
-                <nav>
-                  <ul></ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Header />
 
         <main id="main">
-          <section id="main-section">
-            <div className="wrapper">
-              <div className="pokedex">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Nom</th>
-                      <th>Forme</th>
-                      <th>Type 1</th>
-                      <th>Type 2</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {pokedexData &&
-                      pokedexData.map((pokemon, index) => (
-                        <tr key={index}>
-                          <td>{pokemon.dbSymbol}</td>
-                          <td>{pokemon.characteristics.form}</td>
-                          <td>{pokemon.types.type1}</td>
-                          <td>{pokemon.types.type2}</td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </section>
+          <Pokedex pokedexData={pokedexData} />
         </main>
       </div>
 
-      <footer id="footer">
-        <div className="wrapper">
-          <div id="footer-top"></div>
-          <div id="footer-botttom"></div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };
