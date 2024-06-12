@@ -1,4 +1,4 @@
-import { PokemonData } from "./interfaceDataGame";
+import { PokemonData } from "./interfaceDataGame.ts";
 import {
   PokemonDataOrigin,
   PokemonDataFormOrigin,

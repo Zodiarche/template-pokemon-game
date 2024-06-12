@@ -111,28 +111,6 @@ main {
         }
     }
 
-    img {
-        &.float-right,
-        &.alignright {
-            margin: {
-                left: 2rem;
-                bottom: 2rem;
-            }
-        }
-
-        &.float-left,
-        &.alignleft {
-            margin: {
-                right: 2rem;
-                bottom: 2rem;
-            }
-        }
-
-        &.aligncenter {
-            display: block;
-        }
-    }
-
     // strong, b {}
 
     blockquote {
