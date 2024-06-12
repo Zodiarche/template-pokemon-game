@@ -3,27 +3,37 @@ import {
   PokemonDataOrigin,
   PokemonDataFormOrigin,
 } from "./interfaceDataGameOrigin";
+
 /**
- * Main function to get Pokemon data
- * @param {string} pokemonName - The name of the Pokemon
- * @param {string} pokemonForm - The form of the Pokemon
- * @returns {Object} The formatted Pokemon data
+ * Main function to get data for all Pokemon in regional.json
+ * @returns {Object[]} The array of formatted Pokemon data
  */
-const getDataFromPokemon = async (pokemonName: string, pokemonForm: number) => {
+const getDataForAllPokemon = async (): Promise<PokemonData[]> => {
   try {
-    const formatedJSON: PokemonData = {} as PokemonData;
-    const data: PokemonDataFormOrigin | undefined = await getPokemonJSON(
-      pokemonName,
-      pokemonForm,
-      formatedJSON
-    );
-    if (!data) {
-      throw new Error("Data is undefined");
+    const response = await fetch("data/dex/regional.json");
+    const regionalData = await response.json();
+    const allPokemonData: PokemonData[] = [];
+
+    for (const creature of regionalData.creatures) {
+      const pokemonName = creature.dbSymbol;
+      const pokemonForm = creature.form;
+      const formatedJSON: PokemonData = {} as PokemonData;
+      const data: PokemonDataFormOrigin | undefined = await getPokemonJSON(
+        pokemonName,
+        pokemonForm,
+        formatedJSON
+      );
+
+      if (!data) throw new Error("Data is undefined");
+
+      fillJSON(formatedJSON, data);
+      allPokemonData.push(formatedJSON);
     }
-    fillJSON(formatedJSON, data);
-    return formatedJSON;
+
+    return allPokemonData;
   } catch (err) {
     console.error(err);
+    return [];
   }
 };
 
@@ -224,4 +234,5 @@ const putBreeding = (
     babyForm: data.babyForm,
   };
 };
-export default getDataFromPokemon;
+
+export default getDataForAllPokemon;
