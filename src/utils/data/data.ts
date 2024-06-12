@@ -30,6 +30,7 @@ const getDataForAllPokemon = async (): Promise<PokemonData[]> => {
       allPokemonData.push(formatedJSON);
     }
 
+    console.log(allPokemonData);
     return allPokemonData;
   } catch (err) {
     console.error(err);
